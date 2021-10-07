@@ -16,10 +16,7 @@ export const TodoComponent = () => {
   useEffect(() => {
     async function getData() {
       let todoList = await getTodoList();
-      console.log('foo: ', todoList);
       setItems(todoList);
-
-
     }
     getData();
 
@@ -42,7 +39,7 @@ export const TodoComponent = () => {
     setSelectedItems(items)
   }
 
-  function deleteItems() {
+  async function deleteItems() {
     const newItems = items.filter((item: any) => !selectedItems.includes(item.id));
     setItems(newItems)
   }

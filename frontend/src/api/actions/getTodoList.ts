@@ -6,7 +6,6 @@ export async function getTodoList() {
     method: 'GET',
   });
   assertResponse(result);
-  console.log('result: ', result);
 
   return result.json();
 }
