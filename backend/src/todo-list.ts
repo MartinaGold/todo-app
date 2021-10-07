@@ -9,3 +9,7 @@ export function handleTodoList(req: any, res: any): any {
     {id: 7, task: 'Dusting'},
   ]);
 }
+
+export function deleteTodoItems(req: any, res: any): any {
+  res.send('Got a DELETE request at /user')
+}
