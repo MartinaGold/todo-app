@@ -1,13 +1,12 @@
-export function handleTodoList(req: any, res: any): any {
-  res.json([
-    {id: 1, task: 'Vacuuming'},
-    {id: 2, task: 'Washing dishes'},
-    {id: 3, task: 'Feeding pets'},
-    {id: 4, task: 'Preparing meals'},
-    {id: 5, task: 'Doing laundry'},
-    {id: 6, task: 'Sweeping'},
-    {id: 7, task: 'Dusting'},
-  ]);
+const pool = require('../database/todo-items')
+export async function handleTodoList(req: any, res: any): Promise<any> {
+  try {
+    const sqlQuery = 'Select * FROM tasks';
+    const rows = await pool.query(sqlQuery);
+    res.send(rows)
+  } catch (error: any) {
+    res.status(400).send(error.message)
+  }
 }
 
 export function deleteTodoItems(req: any, res: any): any {
